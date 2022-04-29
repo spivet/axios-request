@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import type { AxiosInstance } from 'axios'
 import type { RequestConfig } from './types'
 import resIntercept from './interceptor/response'
 import reqIntercept from './interceptor/request'
@@ -10,25 +10,27 @@ const defaultConfig: RequestConfig = {
   headers: {
     'Content-Type': 'application/json;charset=UTF-8'
   },
+  messager(msg: string) {
+    console.log(msg)
+  }
 }
 class Request {
   instance: AxiosInstance
-  // private messager(msg: string): void
 
   constructor(config: RequestConfig = defaultConfig) {
     this.instance = axios.create(config)
-    // this.messager = config.messager || 
     reqIntercept(this.instance)
     resIntercept(this.instance)
   }
-  // private _message() {
-  //   this.messager()
-  // }
-  get(url: string, config: RequestConfig) {
-    return this.instance.get(url, config)
+
+  get(url: string, params?: any, config?: RequestConfig) {
+    return this.instance.get(url, {
+      params,
+      ...config
+    })
   }
-  post(url: string, config: RequestConfig) {
-    return this.instance.post(url, config)
+  post(url: string, data?: any, config?: RequestConfig) {
+    return this.instance.post(url, data, config)
   }
 }
 

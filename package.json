@@ -1,6 +1,6 @@
 {
 	"name": "@dayuan/service-http",
-	"version": "1.2.5",
+	"version": "1.0.0",
 	"description": "http",
 	"main": "./dist/index.js",
 	"scripts": {
@@ -8,9 +8,9 @@
 		"build": "tsc -p ./tsconfig.json",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add . && git commit -m 'change log'"
 	},
-	"author": "wanqi.xie <wanqi.xie@dayuan1997.com>",
+	"author": "",
 	"license": "ISC",
-	"repository": "http://gitlab.dayuan1997.com/fe/service-http.git",
+	"repository": "",
 	"dependencies": {
 		"axios": "^0.21.1"
 	},
