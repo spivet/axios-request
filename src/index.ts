@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
-import type { RequestConfig } from './types'
+import type { RequestConfig, ResData } from './types'
 import resIntercept from './interceptor/response'
 import reqIntercept from './interceptor/request'
 
@@ -24,13 +24,13 @@ class Request {
   }
 
   get(url: string, params?: any, config?: RequestConfig) {
-    return this.instance.get(url, {
+    return this.instance.get<string, ResData>(url, {
       params,
       ...config
     })
   }
   post(url: string, data?: any, config?: RequestConfig) {
-    return this.instance.post(url, data, config)
+    return this.instance.post<string, ResData>(url, data, config)
   }
 }
 
