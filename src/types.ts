@@ -6,8 +6,8 @@ export interface ResData {
     status: number
 }
 
-export interface ResError extends Error {
-    data?: ResData
+export interface ResSuccessError extends Error {
+    data: ResData
 }
 
 export interface RequestConfig extends AxiosRequestConfig {
